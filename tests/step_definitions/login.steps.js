@@ -28,10 +28,6 @@ Then('o usuário deve ser redirecionado para a página inicial', async function 
     await this.loginPage.verificacaoLoginSucesso();
 });
 
-After(async function () {
-    if (browser) await browser.close();
-});
-
 // ---------------- CENÁRIO 2 ----------------
 When('o usuário insere um usuário válido e senha inválida', async function () {
     const {usuario, senha} = Credentials.usuarioSenhaInvalido;
@@ -45,12 +41,29 @@ Then('uma mensagem de erro referente ao login inválido deve ser exibida informa
 });
 
 // ---------------- CENÁRIO 3 ----------------
-When('o usuário deixa os campos de usuário e senha em branco', async function () {
-    await this.loginPage.realizarLogin('', '');
+When('o usuário deixa o campo de usuário em branco e insere uma senha válida', async function () {
+    const {senha} = Credentials.usuarioValido;
+    await this.loginPage.realizarLogin('', senha);
 });
-
 // E Clica no botao de login
 
 Then('uma mensagem de erro referente aos campos em branco deve ser exibida informando {string}', async function (menssagemErro) {
     await this.loginPage.verificacaoLoginEmBranco(menssagemErro);
+});
+
+// ---------------- CENÁRIO 4 ----------------
+When('o usuário insere um usuário válido e deixa o campo de senha em branco', async function () {
+    const {usuario} = Credentials.usuarioValido;
+    await this.loginPage.realizarLogin(usuario, '');
+});
+// E Clica no botao de login
+
+Then('uma mensagem de erro referente ao campo de senha em branco deve ser exibida informando {string}', async function (menssagemErro) {
+    await this.loginPage.verificacaoLoginEmBranco(menssagemErro);
+});
+
+
+
+After(async function () {
+    if (browser) await browser.close();
 });

@@ -17,8 +17,15 @@ Contexto:
     E o usuário clica no botão de login
     Então uma mensagem de erro referente ao login inválido deve ser exibida informando 'Epic sadface: Username and password do not match any user in this service'
 
-@loginCamposObrigatoriosEmBranco
-  Cenário: Login com campos obrigatórios em branco
-    Quando o usuário deixa os campos de usuário e senha em branco
+@loginCampoUsuarioEmBranco
+  Cenário: Login com campo de usuário em branco
+    Quando o usuário deixa o campo de usuário em branco e insere uma senha válida
     E o usuário clica no botão de login
     Então uma mensagem de erro referente aos campos em branco deve ser exibida informando 'Epic sadface: Username is required'
+
+@loginCampoSenhaEmBranco
+  Cenário: Login com campo de senha em branco
+    Quando o usuário insere um usuário válido e deixa o campo de senha em branco
+    E o usuário clica no botão de login
+    Então uma mensagem de erro referente ao campo de senha em branco deve ser exibida informando 'Epic sadface: Password is required'
+

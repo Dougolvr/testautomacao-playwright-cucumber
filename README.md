@@ -13,3 +13,6 @@
 -  O Cucumber identifica ambiguidades causadas por steps idênticos, como acontece nesse projeto ao usar o:
 ``` Given('que o usuário está na página de login') ``` e ``` When('o usuário clica no botão de login') ```. Então, nesses casos faz a inserção apenas uma vez desses steps para não gerar erro de ambiguidade.
 
+## Como rodar os testes
+- Todos ->
+- Um cenario específico -> npx cucumber-js --tags @CenarioQueDesejaExecutar (EX.: @loginCampoUsuarioEmBranco)
