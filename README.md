@@ -4,11 +4,15 @@ Este projeto tem como objetivo automatizar cenários de testes **end-to-end (E2E
 
 ## 🧩 Tecnologias Utilizadas
 
-- Playwright - Framework para automação de browsers
-- Cucumber - Para escrita de testes em formato BDD
-- JavaScript (Node.js)
-- Page Object Model (Padrão de projeto para reutilização de código)
-- Estrutura de testes baseada em .feature (Gherkin) 
+- ![Playwright Logo](https://img.shields.io/badge/-Playwright-2c2c2c?style=flat&logo=playwright&logoColor=green) – Framework para automação de browsers
+
+- ![JavaScript Logo](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) – Linguagem utilizada no projeto
+
+- ![Cucumber Logo](https://img.shields.io/badge/-Cucumber-23D96C?style=flat&logo=cucumber&logoColor=white) – Para escrita de testes em formato BDD
+
+- ![Gherkin Logo](https://img.shields.io/badge/-Gherkin%20(.feature)-5cb85c?style=flat&logo=gnu-bash&logoColor=white) – Escrita de cenários em linguagem natural para BDD
+
+- ![POM Icon](https://img.shields.io/badge/-Page%20Object%20Model-5c5c5c?style=flat&logo=codeforces&logoColor=white) – Padrão de projeto para reutilização e organização do código
 
 ## ⚙️ Configuração
 
@@ -27,7 +31,7 @@ npm install @cucumber/cucumber
 
 * Crie o arquivo cucumber.js e insira nele:
 
-  ```bash
+```js
   module.exports = {
     default: [
       'tests/features',
@@ -35,6 +39,8 @@ npm install @cucumber/cucumber
       '--require', 'tests/support/**/*.js'
     ].join(' ')
   };
+```
+
 
 ## 📁 Estrutura do Projeto
 
@@ -98,5 +104,5 @@ projeto-bdd-playwright/
   - *Exemplo* - `npx cucumber-js --tags @navegaNoMenuBotaoLogout`
 
 ## ⚠️ Observações
--  O Cucumber não permite múltiplos steps com frases idênticas, como acontece nesse projeto ao usar o:
+-  O Cucumber acusa erro de ambiguidade caso existam múltiplos steps com frases idênticas, como por exemplo:
 ``` Given('que o usuário está na página de login') ``` e ``` When('o usuário clica no botão de login') ```. Então, nesses casos faz a inserção apenas uma vez desses steps para não gerar erro de ambiguidade.
