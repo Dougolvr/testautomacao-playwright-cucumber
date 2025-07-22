@@ -3,7 +3,10 @@ const Credentials = require('../support/credentials');
 
 Given('que o usuário esta na página inicial', async function () {
     await this.loginPage.abrirPagina();
-    await this.loginPage.realizarLogin(Credentials.usuarioValido.usuario, Credentials.usuarioValido.senha);
+    await this.loginPage.realizarLogin(
+        Credentials.usuarioValido.usuario,
+        Credentials.usuarioValido.senha
+    );
     await this.loginPage.clicarBotaoLogin();
 });
 
@@ -35,6 +38,7 @@ Then('o usuário deve ser redirecionado para a página da Sauce Labs', async fun
 
 Given('que o usuário adicionou o produto {string} ao carrinho', async function (nomeProduto) {
     await this.homePage.adicionarProdutoAoCarrinho(nomeProduto);
+    console.log(`Produto ${nomeProduto} adicionado ao carrinho. ✅`);
 });
 
 // Quando o usuário clica no botão de menu
@@ -45,6 +49,7 @@ When('o usuário clica no botão Resetar produtos', async function () {
 
 Then('os produtos do usuário devem ser resetados do carrinho', async function () {
     await this.homePage.verificaReset();
+    console.log('Produto resetados do carrinho. ✅');
 });
 
 // -------------- Cenário: Navegação no menu e clique no botão "Logout"
@@ -56,4 +61,13 @@ When('o usuário clica no botão Logout', async function () {
 
 Then('o usuário deve ser redirecionado para a página de login', async function () {
     await this.homePage.verificaLogoutPagina();
+});
+
+// -------------- Cenário: adicionar um produto ao carrinho
+When('o usuário clica no botão para adiconar o produto {string} ao carrinho', async function (nomeProduto) {
+    await this.homePage.adicionarProdutoAoCarrinho(nomeProduto);
+});
+
+Then('o produto {string} deve ser adicionado ao carrinho', async function (nomeProduto) {
+    await this.homePage.verificaProdutoAdicionadoAoCarrinho(nomeProduto);
 });

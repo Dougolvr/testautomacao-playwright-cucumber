@@ -10,8 +10,12 @@ class HomePage {
     this.botaoLogout = page.locator('#logout_sidebar_link');
     this.botaoReset = page.locator('#reset_sidebar_link');
     this.visibilidadeValorCarrinho = page.locator('.shopping_cart_badge');
+    this.botaoCarrinho = page.locator('.shopping_cart_link');
+    
     
     };
+
+
 
     async acessarMenu(){
         await this.botaoMenu.click();
@@ -65,6 +69,13 @@ class HomePage {
     async adicionarProdutoAoCarrinho(nomeProduto) {
         const produto = this.page.locator('.inventory_item').filter({ has: this.page.getByText(nomeProduto)});
         await produto.getByRole('button', { name: 'Add to cart' }).click();
+    };
+
+    async verificaProdutoAdicionadoAoCarrinho(nomeProduto) {
+        await this.botaoCarrinho.click();
+        await expect(this.page.getByText(nomeProduto)).toBeVisible();
+
+        await this.page.screenshot({ path: `tests/evidencias/${nomeProduto}-no-carrinho.png`});
     };
 
 

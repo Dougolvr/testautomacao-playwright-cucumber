@@ -73,16 +73,16 @@ projeto-bdd-playwright/
 ## 📌 Funcionalidades e Cenários Implementados
 
 ### 🔐 Funcionalidade: Login no Sistema
-- ✅ Cenário: Login com sucesso  
-- ✅ Cenário: Login sem sucesso com senha inválida  
-- ✅ Cenário: Login com campo de usuário em branco  
-- ✅ Cenário: Login com campo de senha em branco  
+- ✅ Cenário: Login com sucesso
+- ✅ Cenário: Login sem sucesso com senha inválida
+- ✅ Cenário: Login com campo de usuário em branco
+- ✅ Cenário: Login com campo de senha em branco
 
-### 🧭 Funcionalidade: Navegação na página de login
-- ✅ Cenário: Navegação no menu e clique no botão **"Todos os Itens"**  
-- ✅ Cenário: Navegação no menu e clique no botão **"Sobre"**  
-- ✅ Cenário: Navegação no menu e clique no botão **"Logout"**  
-- ✅ Cenário: Navegação no menu e clique no botão **"Resetar produtos"**  
+### 🧭 Funcionalidade: Navegação na página de inicial
+- ✅ Cenário: Navegação no menu e clique no botão **"Todos os Itens"**
+- ✅ Cenário: Navegação no menu e clique no botão **"Sobre"**
+- ✅ Cenário: Navegação no menu e clique no botão **"Logout"**
+- ✅ Cenário: Navegação no menu e clique no botão **"Resetar produtos"**
 
 ## 📋 Funcionalidades Planejadas
 

@@ -32,31 +32,31 @@ Contexto:
 
 @adicionarProdutoAoCarrinho
     Cenário: Adicionar produto ao carrinho
-        Quando o usuário clica no botão "Add to Cart" do produto "Sauce Labs Backpack"
-        Então o produto deve ser adicionado ao carrinho exibindo o ícone do carrinho com o número 1
+        Quando o usuário clica no botão para adiconar o produto "Sauce Labs Backpack" ao carrinho
+        Então o produto "Sauce Labs Backpack" deve ser adicionado ao carrinho
 
-@removerProdutoDoCarrinho
-    Cenário: Remover um produto adicionado ao carrinho
-        Dado que o usuário adicionou o produto "Sauce Labs Backpack" ao carrinho
-        Quando o usuário clica no botão "Remove" do produto "Sauce Labs Backpack"
-        Então o produto deve ser removido do carrinho
+# @removerProdutoDoCarrinho
+#     Cenário: Remover um produto adicionado ao carrinho
+#         Dado que o usuário adicionou o produto "Sauce Labs Backpack" ao carrinho
+#         Quando o usuário clica no botão "Remove" do produto "Sauce Labs Backpack"
+#         Então o produto deve ser removido do carrinho
 
-@ordenarProdutosPorNomeCrescente
-    Cenário: Ordenar produtos por nome crescente
-        Quando o usuário seleciona a opção "Name (A to Z)" no menu de ordenação
-        Então os produtos devem ser exibidos em ordem alfabética crescente
+# @ordenarProdutosPorNomeCrescente
+#     Cenário: Ordenar produtos por nome crescente
+#         Quando o usuário seleciona a opção "Name (A to Z)" no menu de ordenação
+#         Então os produtos devem ser exibidos em ordem alfabética crescente
 
-@ordenarProdutosPorNomeDecrescente
-    Cenário: Ordenar produtos por nome decrescente
-        Quando o usuário seleciona a opção "Name (Z to A)" no menu de ordenação
-        Então os produtos devem ser exibidos em ordem alfabética decrescente
+# @ordenarProdutosPorNomeDecrescente
+#     Cenário: Ordenar produtos por nome decrescente
+#         Quando o usuário seleciona a opção "Name (Z to A)" no menu de ordenação
+#         Então os produtos devem ser exibidos em ordem alfabética decrescente
 
-@ordenarProdutosPorPreçoCrescente
-    Cenário: Ordenar produtos por preço crescente
-        Quando o usuário seleciona a opção "Price (low to high)" no menu de ordenação
-        Então os produtos devem ser exibidos em ordem de preço crescente
+# @ordenarProdutosPorPreçoCrescente
+#     Cenário: Ordenar produtos por preço crescente
+#         Quando o usuário seleciona a opção "Price (low to high)" no menu de ordenação
+#         Então os produtos devem ser exibidos em ordem de preço crescente
 
-@ordenarProdutosPorPreçoDecrescente
-    Cenário: Ordenar produtos por preço decrescente
-        Quando o usuário seleciona a opção "Price (high to low)" no menu de ordenação
-        Então os produtos devem ser exibidos em ordem de preço decrescente
+# @ordenarProdutosPorPreçoDecrescente
+#     Cenário: Ordenar produtos por preço decrescente
+#         Quando o usuário seleciona a opção "Price (high to low)" no menu de ordenação
+#         Então os produtos devem ser exibidos em ordem de preço decrescente
