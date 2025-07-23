@@ -51,6 +51,7 @@ projeto-bdd-playwright/
 │   └── loginPage.js
 │
 ├── tests/
+│   ├── evidencias/
 │   ├── features/                 # Arquivos .feature com cenários escritos em Gherkin
 │   │   ├── home.feature
 │   │   └── login.feature

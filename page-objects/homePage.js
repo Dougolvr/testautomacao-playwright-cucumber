@@ -11,11 +11,10 @@ class HomePage {
     this.botaoReset = page.locator('#reset_sidebar_link');
     this.visibilidadeValorCarrinho = page.locator('.shopping_cart_badge');
     this.botaoCarrinho = page.locator('.shopping_cart_link');
-    
-    
+    this.botaoRemoverProduto = page.locator('.btn_secondary');
+    this.botaoOrdenar = page.locator('.product_sort_container');
+
     };
-
-
 
     async acessarMenu(){
         await this.botaoMenu.click();
@@ -48,12 +47,7 @@ class HomePage {
     };
 
     async verificaReset() {
-        const visibilidadeCarrinho = await this.visibilidadeValorCarrinho.isVisible();
-
-        if(visibilidadeCarrinho) {
-            const valorCarrinho = await this.visibilidadeValorCarrinho.textContent();
-            throw new error(`O carrinho não foi resetado. Valor atual: ${valorCarrinho}`);
-        }
+        await expect(this.visibilidadeValorCarrinho).not.toBeVisible();
     };
 
     async clicarEVerificarBotaoLogout() {
@@ -64,6 +58,7 @@ class HomePage {
 
     async verificaLogoutPagina() {
         await expect(this.page).toHaveURL('https://www.saucedemo.com/v1/index.html');
+        await this.page.screenshot({ path: 'tests/evidencias/pagina-login.png' });
     };
 
     async adicionarProdutoAoCarrinho(nomeProduto) {
@@ -75,11 +70,58 @@ class HomePage {
         await this.botaoCarrinho.click();
         await expect(this.page.getByText(nomeProduto)).toBeVisible();
 
-        await this.page.screenshot({ path: `tests/evidencias/${nomeProduto}-no-carrinho.png`});
+        await this.page.screenshot({ path: `tests/evidencias/produto-adicionado-no-carrinho.png`});
     };
 
+    async clicarBotaoRemover(){
+        await this.botaoRemoverProduto.isVisible();
+        await this.botaoRemoverProduto.click();
+    };
+    
+    async verificaProdutoRemovido() {
+        await expect(this.visibilidadeValorCarrinho).not.toBeVisible();
 
+        await this.page.screenshot({ path: `tests/evidencias/produto-removido.png`});
+    };
 
+    async selecionarOpcaoOrdenacao(opcao) {
+        await this.botaoOrdenar.click();
+        await this.botaoOrdenar.selectOption(opcao);
+    };
+
+    async verificaOrdenacaoProdutosCrescente() {
+        const produtos = await this.page.locator('.inventory_item_name').allTextContents();
+        const produtosOrdenados = [...produtos].sort((a, b) => a.localeCompare(b));
+
+        expect(produtos).toEqual(produtosOrdenados);
+        await this.page.screenshot({ path: `tests/evidencias/produtos-ordenados-crescentes.png`});
+    };
+
+    async verificaOrdenacaoProdutosDecrescente() {
+        const produtos = await this.page.locator('.inventory_item_name').allTextContents();
+        const produtosOrdenados = [...produtos].sort((a, b) => b.localeCompare(a));
+        
+        expect(produtos).toEqual(produtosOrdenados);
+        await this.page.screenshot({ path: `tests/evidencias/produtos-ordenados-decrescentes.png`});
+    };
+
+    async verificaOrdenacaoProdutosPreçoCrescente() {
+        const produtos = await this.page.locator('.inventory_item_price').allTextContents();
+        const preco = produtos.map(p => parseFloat(p.replace('$', '')));
+        const produtosOrdenados = [...preco].sort((a, b) => a - b);
+
+        expect(preco).toEqual(produtosOrdenados);
+        await this.page.screenshot({ path: `tests/evidencias/produtos-ordenados-preco-crescente.png`});
+    };
+
+    async verificaOrdenacaoProdutosPrecoDecrescente() {
+        const produtos = await this.page.locator('.inventory_item_price').allTextContents();
+        const preco = produtos.map(p => parseFloat(p.replace('$', '')));
+        const produtosOdenados = [...preco].sort((a, b) => b - a);
+
+        expect(preco).toEqual(produtosOdenados);
+        await this.page.screenshot({ path: `tests/evidencias/produtos-ordenados-preco-decrescente.png`});
+    };
 }
 
 module.exports = HomePage;

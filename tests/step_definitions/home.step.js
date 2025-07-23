@@ -38,7 +38,6 @@ Then('o usuário deve ser redirecionado para a página da Sauce Labs', async fun
 
 Given('que o usuário adicionou o produto {string} ao carrinho', async function (nomeProduto) {
     await this.homePage.adicionarProdutoAoCarrinho(nomeProduto);
-    console.log(`Produto ${nomeProduto} adicionado ao carrinho. ✅`);
 });
 
 // Quando o usuário clica no botão de menu
@@ -49,7 +48,6 @@ When('o usuário clica no botão Resetar produtos', async function () {
 
 Then('os produtos do usuário devem ser resetados do carrinho', async function () {
     await this.homePage.verificaReset();
-    console.log('Produto resetados do carrinho. ✅');
 });
 
 // -------------- Cenário: Navegação no menu e clique no botão "Logout"
@@ -70,4 +68,41 @@ When('o usuário clica no botão para adiconar o produto {string} ao carrinho', 
 
 Then('o produto {string} deve ser adicionado ao carrinho', async function (nomeProduto) {
     await this.homePage.verificaProdutoAdicionadoAoCarrinho(nomeProduto);
+});
+
+// -------------- Cenário: remover um produto do carrinho
+Given('que o usuário tem o produto {string} ao carrinho', async function(nomeProduto) {
+    await this.homePage.adicionarProdutoAoCarrinho(nomeProduto);
+});
+
+When('o usuário clica no botão para remover o produto selecionado', async function () {
+    await this.homePage.clicarBotaoRemover();
+});
+
+Then('o produto deve ser removido do carrinho', async function () {
+    await this.homePage.verificaProdutoRemovido();
+});
+
+// -------------- Cenário: Ordenar produtos por nome crescente
+When('o usuário seleciona a opção {string} no menu de ordenação', async function(opcaoOrdenacao) {
+    await this.homePage.selecionarOpcaoOrdenacao(opcaoOrdenacao);
+});
+
+Then('os produtos devem ser exibidos em ordem alfabética crescente', async function () {
+    await this.homePage.verificaOrdenacaoProdutosCrescente();
+});
+
+// -------------- Cenário: Ordenar produtos por nome decrescente
+Then('os produtos devem ser exibidos em ordem alfabética decrescente', async function () {
+    await this.homePage.verificaOrdenacaoProdutosDecrescente();
+});
+
+// -------------- Cenário: Ordenar produtos por preço crescente
+Then('os produtos devem ser exibidos em ordem de preço crescente', async function () {
+    await this.homePage.verificaOrdenacaoProdutosPreçoCrescente()
+});
+
+// -------------- Cenário: Ordenar produtos por preço decrescente
+Then('os produtos devem ser exibidos em ordem de preço decrescente', async function () {
+    await this.homePage.verificaOrdenacaoProdutosPrecoDecrescente();
 });
