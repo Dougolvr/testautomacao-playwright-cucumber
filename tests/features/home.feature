@@ -9,7 +9,7 @@ Contexto:
     Cenário: Navegação no menu e clique no botão "Todos os Itens"
         Quando o usuário clica no botão de menu
         E o usuário clica no botão Todos os Itens
-        Então o usuário deve ser redirecionado para a página de produtos
+        Então o usuário deve ser redirecionado para a página de itens
 
 @navegaNoMenuBotaoSobre
     Cenário: Navegação no menu e clique no botão "Sobre"

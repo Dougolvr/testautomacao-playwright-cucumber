@@ -7,6 +7,16 @@ const Credentials = {
         usuario: 'standard_user',
         senha: 'invalid_password'
     },
+    dadosCheckout:{
+        firstName: 'John',
+        lastName: 'Doe',
+        postalCode: '12345'
+    },
+    dadosCheckoutEmBranco:{
+        firstName: '',
+        lastName: '',
+        postalCode: ''
+    }
 };
 
 module.exports = Credentials;

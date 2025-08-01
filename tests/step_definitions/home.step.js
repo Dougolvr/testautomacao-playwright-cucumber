@@ -19,7 +19,7 @@ When('o usuário clica no botão Todos os Itens', async function () {
     await this.homePage.clicarEVerificaBotaoTodosItens();
 });
 
-Then('o usuário deve ser redirecionado para a página de produtos', async function () {
+Then('o usuário deve ser redirecionado para a página de itens', async function () {
     await this.homePage.verificaPaginaTodosOsItens();
 });
 
